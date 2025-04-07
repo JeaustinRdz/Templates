@@ -7,4 +7,5 @@ The examples provided cover common scenarios and aim to support teams in buildin
 ---
 
 ## 📁 Repository Structure
-
+Template.yml : The main template that call the child template
+simple.param.yaml: The child pipeline that can be use in multiples projects 
