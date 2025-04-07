@@ -15,7 +15,7 @@ stages:
 - stage: DeployAndSwap
   displayName: Build and Deploy Project
   jobs:
-  - template: simple-param.yml@self
+  - template: simple-param.yml@self #This template file (Simple-param.yml) is in the same repository that is the Template.yml
     parameters:
         ServiceConnection: ${{ variables.ServiceConnection }}
         FunctionAppTy: ${{ variables.FunctionAppTy }}
