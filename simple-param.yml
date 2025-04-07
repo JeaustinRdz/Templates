@@ -1,0 +1,35 @@
+parameters:
+  - name: ServiceConnection
+    default: ''
+  - name: FunctionAppTy
+    default: ''  
+  - name: FunctionAppName
+    default: ''
+  - name: SlotResouceGroupName
+    default: ''
+  - name: FunctonAppSlotName
+    default: ''
+    
+jobs:
+- job: Deploy_and_swap
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: AzureFunctionApp@2
+    inputs:
+      connectedServiceNameARM: '${{ parameters.ServiceConnection }}'
+      appType: '${{ parameters.FunctionAppTy }}'
+      appName: ${{ parameters.FunctionAppName }}
+      deployToSlotOrASE: true
+      resourceGroupName: '${{ parameters.SlotResouceGroupName }}'
+      slotName: '${{ parameters.FunctonAppSlotName }}'
+      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      deploymentMethod: 'auto'
+
+  - task: AzureAppServiceManage@0
+    inputs:
+      azureSubscription: '${{ parameters.ServiceConnection }}'
+      Action: 'Swap Slots'
+      WebAppName: '${{ parameters.FunctionAppName }}'
+      ResourceGroupName: '${{ parameters.SlotResouceGroupName }}'
+      SourceSlot: '${{ parameters.FunctonAppSlotName }}'

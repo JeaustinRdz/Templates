@@ -1,0 +1,27 @@
+trigger:
+  - none
+
+pool:
+  vmImage: 'ubuntu-latest'
+  
+variables:
+  ServiceConnection: 'ServiceConnectionName'
+  FunctionAppTy: "functionAppLinux" #Could be functionAppLinux or functionApp
+  FunctionAppName : "FunctionAppName"
+  SlotResouceGroupName : "Add_SlotResouceGroupName"
+  FunctonAppSlotName : "Add_FunctonAppSlotName"
+
+stages:
+- stage: DeployAndSwap
+  displayName: Build and Deploy Project
+  jobs:
+  - template: simple-param.yml@self
+    parameters:
+        ServiceConnection: ${{ variables.ServiceConnection }}
+        FunctionAppTy: ${{ variables.FunctionAppTy }}
+        FunctionAppName: ${{ variables.FunctionAppName }}
+        SlotResouceGroupName: ${{ variables.SlotResouceGroupName }}
+        FunctonAppSlotName: ${{ variables.FunctonAppSlotName }}
+
+
+
