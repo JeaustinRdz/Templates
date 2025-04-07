@@ -8,6 +8,11 @@ The examples provided cover common scenarios and aim to support teams in buildin
 
 ## 📁 Repository Structure
 
-Template.yml : The main template that call the child template
+Template.yml : The main template that use the child template if is in the same repositorie
+
+Template-Another-project.yml: The main template that use the child template if is in a diferent repositoy in a diferent project
 
 simple.param.yaml: The child pipeline that can be use in multiples projects 
+
+ 
+
