@@ -6,9 +6,9 @@ pool:
 
 resources:
   repositories:
-  - repository: MyAzureReposGitRepository # In a different organization
+  - repository: MyAzureReposGitRepository #Name to call the repo
     type: git
-    name: JeaustinProject/Test
+    name: ProjectName/RepositoryName
   
 variables:
   ServiceConnection: 'ServiceConnectionName'
